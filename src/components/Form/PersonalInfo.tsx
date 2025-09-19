@@ -29,6 +29,7 @@ export default function PersonalInfo({
             type="text"
             id="name"
             name="name"
+            placeholder="Maria da Silva"
             value={personalInfo.name}
             onChange={(e) => onUpdate({ name: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:rind-indigo-500 sm:text-sm p-2 border"
@@ -45,6 +46,7 @@ export default function PersonalInfo({
             type="email"
             id="email"
             name="email"
+            placeholder="seuemail@email.com"
             value={personalInfo.email}
             onChange={(e) => onUpdate({ email: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:rind-indigo-500 sm:text-sm p-2 border"
@@ -61,6 +63,7 @@ export default function PersonalInfo({
             type="tel"
             id="phone"
             name="phone"
+            placeholder="(xx)xxxxx-xxxx"
             value={personalInfo.phone}
             onChange={(e) => onUpdate({ phone: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:rind-indigo-500 sm:text-sm p-2 border"
@@ -77,6 +80,7 @@ export default function PersonalInfo({
             type="url"
             id="linkedin"
             name="linkedin"
+            placeholder="https://www.linkedin.com/in/seuperfil"
             value={personalInfo.linkedin}
             onChange={(e) => onUpdate({ linkedin: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:rind-indigo-500 sm:text-sm p-2 border"
@@ -87,12 +91,13 @@ export default function PersonalInfo({
             htmlFor="city"
             className="block text-sm font-medium text-gray-700"
           >
-            Cidade
+            Cidade - Estado
           </label>
           <input
             type="text"
             id="city"
             name="city"
+            placeholder="São Paulo - SP"
             value={personalInfo.city}
             onChange={(e) => onUpdate({ city: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:rind-indigo-500 sm:text-sm p-2 border"
@@ -108,6 +113,7 @@ export default function PersonalInfo({
           <textarea
             id="summary"
             name="summary"
+            placeholder="Busco uma oportunidade como estagiária em Desenvolvimento de Software..."
             rows={4}
             value={personalInfo.summary}
             onChange={(e) => onUpdate({ summary: e.target.value })}

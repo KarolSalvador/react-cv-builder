@@ -14,7 +14,7 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
           {personalInfo.name}
         </h1>
         <p className="text-gray-600">
-          {personalInfo.email} | {personalInfo.phone} | Fortaleza - Ce
+          {personalInfo.email} | {personalInfo.phone} | {personalInfo.city}
         </p>
         <p className="text-blue-500 hover:underline">
           <a
