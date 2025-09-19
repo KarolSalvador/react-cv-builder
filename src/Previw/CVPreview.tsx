@@ -5,7 +5,7 @@ interface CVPreviewProps {
 }
 
 export default function CVPreview({ cvData }: CVPreviewProps) {
-  const { personalInfo } = cvData;
+  const { personalInfo, skills } = cvData;
 
   return (
     <div className="p-8 font-sans">
@@ -52,6 +52,14 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
             <h2 className="text-2xl font-bold border-b-2 border-blue-300 pb-2 mb-4">
               HABILIDADES
             </h2>
+            <ul className="list-disc list-inside space-y-2">
+              {skills.map((skill, index) => (
+                <li key={index}>
+                  <span className="font-semibold">{skill.name}</span> -{" "}
+                  {skill.level}
+                </li>
+              ))}
+            </ul>
           </section>
         </div>
       </div>
