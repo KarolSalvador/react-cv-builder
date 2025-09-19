@@ -3,6 +3,15 @@ export type Skill = {
   level: "Básico" | "Intermediário" | "Avançado" | "Proficiente";
 };
 
+export type Experience = {
+  company: string;
+  position: string;
+  startDate: string;
+  endDate: string;
+  isCurrent: boolean;
+  description: string;
+};
+
 export type CVData = {
   personalInfo: {
     name: string;
@@ -13,4 +22,5 @@ export type CVData = {
     summary: string;
   };
   skills: Skill[];
+  experiences: Experience[];
 };

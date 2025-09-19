@@ -2,21 +2,26 @@ import { useState } from "react";
 import "./App.css";
 import PersonalInfo from "./components/Form/PersonalInfo";
 import CVPreview from "./Previw/CVPreview";
-import type { CVData, Skill } from "./types/cv.types";
+import type {
+  CVData,
+  Skill,
+  Experience as ExperienceType,
+} from "./types/cv.types";
 import Skills from "./components/Form/Skills";
+import Experience from "./components/Form/Experience";
 
 function App() {
   const [cvData, setCvData] = useState<CVData>({
     personalInfo: {
-      name: "Karoline Salvador",
-      email: "karolsalvador91@gmail.com",
-      phone: "+55(85)996742948",
-      linkedin: "https://www.linkedin.com/in/karolisalvador/",
-      city: "Fortaleza-Ce",
-      summary:
-        "Busco uma oportunidade como estagiária em Desenvolvimento de Software...",
+      name: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      city: "",
+      summary: "",
     },
     skills: [],
+    experiences: [],
   });
 
   const updatePersonalInfo = (data: Partial<CVData["personalInfo"]>) => {
@@ -26,6 +31,22 @@ function App() {
         ...prevData.personalInfo,
         ...data,
       },
+    }));
+  };
+
+  const onAddExperience = (experience: ExperienceType) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      experiences: [...prevData.experiences, experience],
+    }));
+  };
+
+  const onRemoveExperience = (indexToRemove: number) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      experiences: prevData.experiences.filter(
+        (_, index) => index !== indexToRemove
+      ),
     }));
   };
 
@@ -53,6 +74,11 @@ function App() {
         <PersonalInfo
           personalInfo={cvData.personalInfo}
           onUpdate={updatePersonalInfo}
+        />
+        <Experience
+          experiences={cvData.experiences}
+          onAddExperience={onAddExperience}
+          onRemoveExperience={onRemoveExperience}
         />
         <Skills
           skills={cvData.skills}

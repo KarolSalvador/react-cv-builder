@@ -5,7 +5,7 @@ interface CVPreviewProps {
 }
 
 export default function CVPreview({ cvData }: CVPreviewProps) {
-  const { personalInfo, skills } = cvData;
+  const { personalInfo, skills, experiences } = cvData;
 
   return (
     <div className="p-8 font-sans">
@@ -38,8 +38,21 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
 
           <section className="mb-6">
             <h2 className="text-2xl font-bold border-b-2 border-blue-300 pb-2 mb-4">
-              EXPERIÊNCIA
+              HISTÓRICO PROFISSIONAL
             </h2>
+            <ul className="space-y-4">
+              {experiences.map((exp, index) => (
+                <li key={index} className="relative">
+                  <h3 className="text-lg font-semibold">{exp.company}</h3>
+                  <p className="text-gray-600">{exp.position}</p>
+                  <p className="text-sm text-gray-500">
+                    Período: {exp.startDate} -{" "}
+                    {exp.isCurrent ? "Trabalho Atual" : exp.endDate}
+                  </p>
+                  <p className="text-gray-700 mt-2">{exp.description}</p>
+                </li>
+              ))}
+            </ul>
           </section>
 
           <section className="mb-6">
