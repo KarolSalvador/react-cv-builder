@@ -55,7 +55,7 @@ export default function Experience({
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-      <h2 className="text-xl font-bold mb-4">Experiências Profissionais</h2>
+      <h2 className="text-xl font-bold mb-4">Histórico Profissional</h2>
       <div className="space-y-4 mb-4">
         <div>
           <label

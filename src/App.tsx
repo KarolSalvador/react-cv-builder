@@ -6,9 +6,11 @@ import type {
   CVData,
   Skill,
   Experience as ExperienceType,
+  Education as EducationType,
 } from "./types/cv.types";
 import Skills from "./components/Form/Skills";
 import Experience from "./components/Form/Experience";
+import Education from "./components/Form/Education";
 
 function App() {
   const [cvData, setCvData] = useState<CVData>({
@@ -22,7 +24,10 @@ function App() {
     },
     skills: [],
     experiences: [],
+    education: [],
   });
+
+  const [currentStep, setCurrentStep] = useState(0);
 
   const updatePersonalInfo = (data: Partial<CVData["personalInfo"]>) => {
     setCvData((prevData) => ({
@@ -50,6 +55,22 @@ function App() {
     }));
   };
 
+  const onAddEducation = (education: EducationType) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      education: [...prevData.education, education],
+    }));
+  };
+
+  const onRemoveEducation = (indexToRemove: number) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      education: prevData.education.filter(
+        (_, index) => index !== indexToRemove
+      ),
+    }));
+  };
+
   const onAddSkill = (skill: Skill) => {
     setCvData((prevData) => ({
       ...prevData,
@@ -64,6 +85,9 @@ function App() {
     }));
   };
 
+  const nextStep = () => setCurrentStep((prev) => prev + 1);
+  const prevStep = () => setCurrentStep((prev) => prev - 1);
+
   return (
     <div className="flex min-h-screen bg-gray-100">
       <div className="w-1/2 p-8 overflow-y-auto">
@@ -71,20 +95,86 @@ function App() {
           {" "}
           Gerador de Curriculo
         </h1>
-        <PersonalInfo
-          personalInfo={cvData.personalInfo}
-          onUpdate={updatePersonalInfo}
-        />
-        <Experience
-          experiences={cvData.experiences}
-          onAddExperience={onAddExperience}
-          onRemoveExperience={onRemoveExperience}
-        />
-        <Skills
-          skills={cvData.skills}
-          onAddSkill={onAddSkill}
-          onRemoveSkill={onRemoveSkill}
-        />
+
+        {currentStep === 0 && (
+          <div>
+            <PersonalInfo
+              personalInfo={cvData.personalInfo}
+              onUpdate={updatePersonalInfo}
+            />
+            <button
+              onClick={nextStep}
+              className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            >
+              Próximo
+            </button>
+          </div>
+        )}
+
+        {currentStep === 1 && (
+          <div>
+            <Experience
+              experiences={cvData.experiences}
+              onAddExperience={onAddExperience}
+              onRemoveExperience={onRemoveExperience}
+            />
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={prevStep}
+                className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Anterior
+              </button>
+              <button
+                onClick={nextStep}
+                className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Próximo
+              </button>
+            </div>
+          </div>
+        )}
+
+        {currentStep === 2 && (
+          <div>
+            <Education
+              education={cvData.education}
+              onAddEducation={onAddEducation}
+              onRemoveEducation={onRemoveEducation}
+            />
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={prevStep}
+                className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Anterior
+              </button>
+              <button
+                onClick={nextStep}
+                className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Próximo
+              </button>
+            </div>
+          </div>
+        )}
+
+        {currentStep === 3 && (
+          <div>
+            <Skills
+              skills={cvData.skills}
+              onAddSkill={onAddSkill}
+              onRemoveSkill={onRemoveSkill}
+            />
+
+            <button
+              onClick={prevStep}
+              className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+            >
+              Anterior
+            </button>
+          </div>
+        )}
       </div>
       <div className="w-1/2 p-8 bg-whote border-l border-gray-200 shadow-lg overflow-y-auto">
         <CVPreview cvData={cvData} />
