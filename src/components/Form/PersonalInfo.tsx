@@ -1,3 +1,5 @@
+import { formatPhone } from "../../utils/textProcessing";
+
 interface PersonalInfoProps {
   personalInfo: {
     name: string;
@@ -66,7 +68,7 @@ export default function PersonalInfo({
             name="phone"
             placeholder="(xx)xxxxx-xxxx"
             value={personalInfo.phone}
-            onChange={(e) => onUpdate({ phone: e.target.value })}
+            onChange={(e) => onUpdate({ phone: formatPhone(e.target.value) })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:rind-indigo-500 sm:text-sm p-2 border"
           />
         </div>

@@ -1,4 +1,5 @@
 import type { CVData } from "../types/cv.types";
+import { formatPhone } from "../utils/textProcessing";
 
 interface CVPreviewProps {
   cvData: CVData;
@@ -14,7 +15,8 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
           {personalInfo.name}
         </h1>
         <p className="text-gray-600">
-          {personalInfo.email} | {personalInfo.phone} | {personalInfo.city}
+          {personalInfo.email} | {formatPhone(personalInfo.phone)} |{" "}
+          {personalInfo.city}
         </p>
         <div className="flex flex-row justify-start gap-2">
           <p className="text-gray-600">
@@ -44,7 +46,7 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
       </div>
 
       <div className="flex">
-        <div className="w-2/3 pr-6">
+        <div className="w-3/3 pr-6">
           <section className="mb-6">
             <h2 className="text-2xl font-bold border-b-2 border-blue-300 pb-2 mb-4">
               OBJETIVO
