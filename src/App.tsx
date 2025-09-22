@@ -15,12 +15,13 @@ import Education from "./components/Form/Education";
 function App() {
   const [cvData, setCvData] = useState<CVData>({
     personalInfo: {
-      name: "",
-      email: "",
-      phone: "",
-      linkedin: "",
-      city: "",
-      summary: "",
+      name: "Seu Nome",
+      email: "seu.email@email.com",
+      phone: "(xx) 9xxxx-xxxx",
+      linkedin: "https://linkedin.com/in/seulinkedin/",
+      github: "https://github.com/seuperfil",
+      city: "Cidade - Estado",
+      summary: "Seu resumo profissional",
     },
     skills: [],
     experiences: [],

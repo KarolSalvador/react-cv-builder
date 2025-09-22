@@ -4,6 +4,7 @@ interface PersonalInfoProps {
     email: string;
     phone: string;
     linkedin: string;
+    github: string;
     city: string;
     summary: string;
   };
@@ -83,6 +84,23 @@ export default function PersonalInfo({
             placeholder="https://www.linkedin.com/in/seuperfil"
             value={personalInfo.linkedin}
             onChange={(e) => onUpdate({ linkedin: e.target.value })}
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:rind-indigo-500 sm:text-sm p-2 border"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="linkedin"
+            className="block text-sm font-medium text-gray-700"
+          >
+            GitHub
+          </label>
+          <input
+            type="url"
+            id="github"
+            name="github"
+            placeholder="https://github.com/seuperfil"
+            value={personalInfo.github}
+            onChange={(e) => onUpdate({ github: e.target.value })}
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:rind-indigo-500 sm:text-sm p-2 border"
           />
         </div>

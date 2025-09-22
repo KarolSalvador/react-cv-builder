@@ -16,15 +16,31 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
         <p className="text-gray-600">
           {personalInfo.email} | {personalInfo.phone} | {personalInfo.city}
         </p>
-        <p className="text-blue-500 hover:underline">
-          <a
-            href={personalInfo.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {personalInfo.linkedin}
-          </a>
-        </p>
+        <div className="flex flex-row justify-start gap-2">
+          <p className="text-gray-600">
+            Linkedin:
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              {personalInfo.linkedin}
+            </a>
+          </p>
+          <p>|</p>
+          <p className="text-gray-600">
+            GitHub:
+            <a
+              href={personalInfo.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 hover:underline"
+            >
+              {personalInfo.github}
+            </a>
+          </p>
+        </div>
       </div>
 
       <div className="flex">

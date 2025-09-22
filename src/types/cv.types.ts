@@ -26,6 +26,7 @@ export type CVData = {
     email: string;
     phone: string;
     linkedin: string;
+    github: string;
     city: string;
     summary: string;
   };
