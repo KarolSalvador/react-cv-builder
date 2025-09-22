@@ -1,5 +1,5 @@
 import type { CVData } from "../types/cv.types";
-import { formatPhone } from "../utils/textProcessing";
+import { formatPhone, formatDate } from "../utils/textProcessing";
 
 interface CVPreviewProps {
   cvData: CVData;
@@ -64,8 +64,8 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
                   <h3 className="text-lg font-semibold">{exp.company}</h3>
                   <p className="text-gray-600">{exp.position}</p>
                   <p className="text-sm text-gray-500">
-                    Período: {exp.startDate} -{" "}
-                    {exp.isCurrent ? "Trabalho Atual" : exp.endDate}
+                    Período: {formatDate(exp.startDate)} -
+                    {exp.isCurrent ? "Trabalho Atual" : formatDate(exp.endDate)}
                   </p>
                   <p className="text-gray-700 mt-2">{exp.description}</p>
                 </li>
@@ -83,7 +83,7 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
                   <h3 className="font-semibold text-lg">{edu.institution}</h3>
                   <p className="text-gray-700">{edu.course}</p>
                   <p className="text-sm text-gray-500">
-                    {edu.startDate} - {edu.endDate}
+                    {formatDate(edu.startDate)} - {formatDate(edu.endDate)}
                   </p>
                   <p className="text-sm text-gray-500">Status: {edu.status}</p>
                 </li>
