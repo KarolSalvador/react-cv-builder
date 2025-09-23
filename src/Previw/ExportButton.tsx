@@ -12,7 +12,10 @@ export default function ExportButton({
 }: ExportButtonProps) {
   const handleExport = () => {
     if (cvElementRef.current) {
+      console.log("Referência do elemento encontrada!");
       exportCV(cvElementRef.current, fileName);
+    } else {
+      console.log("Erro: Referência do elemento não encontrada!");
     }
   };
 

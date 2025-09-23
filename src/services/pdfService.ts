@@ -3,7 +3,7 @@ import jsPDF from "jspdf";
 
 export const exportCV = async (element: HTMLElement, fileName: string) => {
   const canvas = await html2canvas(element, { scale: 2 });
-  const imgData = canvas.toDataURL("image.png");
+  const imgData = canvas.toDataURL("image/png");
 
   const pdf = new jsPDF("p", "mm", "a4");
   const imgProps = pdf.getImageProperties(imgData);
@@ -12,5 +12,5 @@ export const exportCV = async (element: HTMLElement, fileName: string) => {
 
   pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-  pdf.save(`${fileName}.pdf`);
+  pdf.save(fileName);
 };

@@ -229,10 +229,11 @@ function App() {
         )}
       </div>
 
-      <div className="w-1/2 p-8 bg-whote border-l border-gray-200 shadow-lg overflow-y-auto">
-        <div ref={cvPreviewRef}>
-          <CVPreview cvData={cvData} />
-        </div>
+      <div
+        className="w-1/2 p-8 bg-white border-l border-gray-200 shadow-lg overflow-y-auto"
+        ref={cvPreviewRef}
+      >
+        <CVPreview cvData={cvData} />
       </div>
     </div>
   );

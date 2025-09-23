@@ -13,7 +13,7 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
   const { personalInfo, skills, experiences, education, languages } = cvData;
 
   return (
-    <div className="p-8 font-sans">
+    <div className="p-8 font-sans bg-white">
       <div className="p-6 rounded-t-lg mb-6">
         <h1 className="text-4xl font-bold text-gray-800">
           {personalInfo.name}
