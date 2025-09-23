@@ -1,22 +1,16 @@
-# Gerador de Currículo
+# Gerador de Currículo Interativo com Visualização em Tempo Real
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 ## Sobre o projeto
 
 Este projeto é uma aplicação web interativa desenvolvida para simplificar a criação de currículos. Ele guia o usuário por um formulário passo a passo para inserir dados pessoais, experiências, formação e habilidades, com uma visualização do currículo sendo gerada e atualizada em tempo real.
 
 ![Demonstração do Gerador de Currículo](https://github.com/KarolSalvador/react-cv-builder/blob/main/src/assets/demonstracao.gif.gif?raw=true)
-
-### 🛠️ Tecnologias e Habilidades utilizadas
-
-<div align="center">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg" alt="React icon" width="40" height="40" style="max-width:100%;margin: 0 2px;" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript icon" width="40" height="40" style="max-width:100%;margin: 0 2px;" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" alt="Typescript icon" width="40" height="40" style="max-width:100%;margin: 0 2px;" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="Html icon" width="40" height="40" style="max-width:100%;margin: 0 2px;" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS icon" width="40" height="40" style="max-width:100%;margin: 0 2px;" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind CSS icon" width="40" height="40" style="max-width:100%;margin: 0 2px;"/>
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" alt="Vite icon" width="40" height="40" style="max-width:100%;margin: 0 2px;"/>
-</div>
 
 ### 💻 Instalação e Execução
 
@@ -73,15 +67,19 @@ Este projeto está licenciado sob os termos da [Licença MIT](https://opensource
 Contribuições, sugestões e relatórios de bugs são muito bem-vindos! Se você deseja contribuir para este projeto, siga os passos abaixo:
 
 1.  **Faça um Fork do Repositório:** Clique no botão "Fork" no canto superior direito deste repositório.
+
 2.  **Clone o seu Fork:** Clone o projeto para a sua máquina local.
     ```bash
     git clone [https://github.com/seu-usuario/react-cv-builder.git](https://github.com/seu-usuario/react-cv-builder.git)
     ```
 3.  **Crie uma nova Branch:** Crie uma branch para a sua contribuição.
+
     ```bash
     git checkout -b nome-da-sua-branch
     ```
+
 4.  **Faça suas Alterações:** Faça as modificações necessárias no código.
+
 5.  **Commit suas Alterações:** Crie um commit com uma mensagem clara e descritiva.
     ```bash
     git commit -m "feat: sua nova funcionalidade"
