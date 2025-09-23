@@ -1,80 +1,71 @@
 import { useState } from "react";
+import type { Languages as LanguagesType } from "../../types/cv.types";
 
-interface SkillsProps {
-  skills: {
-    name: string;
-    level: "Básico" | "Intermediário" | "Avançado" | "Proficiente";
-  }[];
-
-  onAddSkill: (skill: {
-    name: string;
-    level: "Básico" | "Intermediário" | "Avançado" | "Proficiente";
-  }) => void;
-
-  onRemoveSkill: (index: number) => void;
+interface LanguagesProps {
+  languages: LanguagesType[];
+  onAddLanguage: (language: LanguagesType) => void;
+  onRemoveLanguage: (index: number) => void;
 }
 
-export default function Skills({
-  skills,
-  onAddSkill,
-  onRemoveSkill,
-}: SkillsProps) {
-  const [newSkill, setNewSkill] = useState({
+export default function Languages({
+  languages,
+  onAddLanguage,
+  onRemoveLanguage,
+}: LanguagesProps) {
+  const [newLanguage, setNewLanguage] = useState({
     name: "",
-    level: "Intermediário" as
-      | "Básico"
-      | "Intermediário"
-      | "Avançado"
-      | "Proficiente",
+    level: "Básico" as "Básico" | "Intermediário" | "Avançado" | "Nativo",
   });
 
   const handleAdd = () => {
-    if (newSkill.name.trim() !== "") {
-      onAddSkill(newSkill);
-      setNewSkill({ name: "", level: "Intermediário" });
+    if (newLanguage.name.trim() !== "") {
+      onAddLanguage(newLanguage);
+      setNewLanguage({ name: "", level: "Básico" });
     }
   };
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-      <h2 className="text-xl font-bold mb-4">Habilidades</h2>
+      <h2 className="text-xl font-bold mb-4">Idiomas</h2>
       <div className="flex items-end space-x-2 mb-4">
         <div className="flex-1">
           <label
-            htmlFor="skill-name"
+            htmlFor="language-name"
             className="block text-sm font-medium text-gray-700"
           >
-            Habilidade
+            Idioma
           </label>
           <input
             type="text"
-            id="skill-name"
-            value={newSkill.name}
-            onChange={(e) => setNewSkill({ ...newSkill, name: e.target.value })}
+            id="language-name"
+            value={newLanguage.name}
+            onChange={(e) =>
+              setNewLanguage({ ...newLanguage, name: e.target.value })
+            }
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm p-2 border"
           />
         </div>
         <div className="w-1/3">
           <label
-            htmlFor="skill-level"
+            htmlFor="language-level"
             className="block text-sm font-medium text-gray-700"
           >
             Nível
           </label>
           <select
-            id="skill-level"
-            value={newSkill.level}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm p-2 border"
+            id="language-level"
+            value={newLanguage.level}
             onChange={(e) =>
-              setNewSkill({
-                ...newSkill,
+              setNewLanguage({
+                ...newLanguage,
                 level: e.target.value as
                   | "Básico"
                   | "Intermediário"
                   | "Avançado"
-                  | "Proficiente",
+                  | "Nativo",
               })
             }
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm p-2 border"
           >
             <option>Básico</option>
             <option>Intermediário</option>
@@ -91,19 +82,17 @@ export default function Skills({
       </div>
 
       <ul className="space-y-2">
-        {skills.map((skill, index) => (
+        {languages.map((lang, index) => (
           <li
             key={index}
             className="flex justify-between items-center bg-gray-50 p-3 rounded-md"
           >
             <span>
-              {skill.name} - {skill.level}
+              {lang.name} - {lang.level}
             </span>
             <button
-              onClick={() => onRemoveSkill(index)}
-              className="text-red-500 hover:text-red-700"
-              text-sm
-              font-bold
+              onClick={() => onRemoveLanguage(index)}
+              className="text-red-500 hover:text-red-700 text-sm font-bold"
             >
               Remover
             </button>

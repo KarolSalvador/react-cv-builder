@@ -7,25 +7,28 @@ import type {
   Skill,
   Experience as ExperienceType,
   Education as EducationType,
+  Languages as LanguagesType,
 } from "./types/cv.types";
 import Skills from "./components/Form/Skills";
 import Experience from "./components/Form/Experience";
 import Education from "./components/Form/Education";
+import Languages from "./components/Form/Languages";
 
 function App() {
   const [cvData, setCvData] = useState<CVData>({
     personalInfo: {
-      name: "Seu Nome",
-      email: "seu.email@email.com",
-      phone: "(xx) 9xxxx-xxxx",
-      linkedin: "https://linkedin.com/in/seulinkedin/",
-      github: "https://github.com/seuperfil",
-      city: "Cidade - Estado",
-      summary: "Seu resumo profissional",
+      name: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
+      city: "",
+      summary: "",
     },
     skills: [],
     experiences: [],
     education: [],
+    languages: [],
   });
 
   const [currentStep, setCurrentStep] = useState(0);
@@ -83,6 +86,22 @@ function App() {
     setCvData((prevData) => ({
       ...prevData,
       skills: prevData.skills.filter((_, index) => index !== indexToRemove),
+    }));
+  };
+
+  const onAddLanguage = (language: LanguagesType) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      languages: [...prevData.languages, language],
+    }));
+  };
+
+  const onRemoveLanguage = (indexToRemove: number) => {
+    setCvData((prevData) => ({
+      ...prevData,
+      languages: prevData.languages.filter(
+        (_, index) => index !== indexToRemove
+      ),
     }));
   };
 
@@ -167,13 +186,38 @@ function App() {
               onAddSkill={onAddSkill}
               onRemoveSkill={onRemoveSkill}
             />
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={prevStep}
+                className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Anterior
+              </button>
+              <button
+                onClick={nextStep}
+                className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Próximo
+              </button>
+            </div>
+          </div>
+        )}
 
-            <button
-              onClick={prevStep}
-              className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
-            >
-              Anterior
-            </button>
+        {currentStep === 4 && (
+          <div>
+            <Languages
+              languages={cvData.languages}
+              onAddLanguage={onAddLanguage}
+              onRemoveLanguage={onRemoveLanguage}
+            />
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={prevStep}
+                className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+              >
+                Anterior
+              </button>
+            </div>
           </div>
         )}
       </div>

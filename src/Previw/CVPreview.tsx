@@ -10,17 +10,17 @@ interface CVPreviewProps {
 }
 
 export default function CVPreview({ cvData }: CVPreviewProps) {
-  const { personalInfo, skills, experiences, education } = cvData;
+  const { personalInfo, skills, experiences, education, languages } = cvData;
 
   return (
     <div className="p-8 font-sans">
-      <div className="bg-blue-200 p-6 rounded-t-lg mb-6">
+      <div className="p-6 rounded-t-lg mb-6">
         <h1 className="text-4xl font-bold text-gray-800">
           {personalInfo.name}
         </h1>
         <p className="text-gray-600">
-          {personalInfo.email} | {formatPhone(personalInfo.phone)} |{" "}
-          {personalInfo.city}
+          Email: {personalInfo.email} | Tel: {formatPhone(personalInfo.phone)} |
+          Local: {personalInfo.city}
         </p>
         <div className="flex flex-row justify-start gap-2">
           <p className="text-gray-600">
@@ -94,8 +94,8 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
             <ul className="space-y-4">
               {education.map((edu, index) => (
                 <li key={index}>
-                  <h3 className="font-semibold text-lg">{edu.institution}</h3>
-                  <p className="text-gray-700">{edu.course}</p>
+                  <p className="font-semibold text-lg ">{edu.course}</p>
+                  <h3 className="text-gray-700">{edu.institution}</h3>
                   <p className="text-sm text-gray-500">
                     {formatDate(edu.startDate)} - {formatDate(edu.endDate)}
                   </p>
@@ -109,11 +109,25 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
             <h2 className="text-2xl font-bold border-b-2 border-blue-300 pb-2 mb-4">
               HABILIDADES
             </h2>
-            <ul className="list-disc list-inside space-y-2">
+            <ul className="list-disc list-inside space-y-2 grid grid-cols-3">
               {skills.map((skill, index) => (
                 <li key={index}>
                   <span className="font-semibold">{skill.name}</span> -{" "}
                   {skill.level}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="mb-6">
+            <h2 className="text-2xl font-bold border-b-2 border-blue-300 pb-2 mb-4">
+              Idiomas
+            </h2>
+            <ul className="list-disc list-inside space-y-2 grid grid-cols-3">
+              {languages.map((lang, index) => (
+                <li key={index}>
+                  <span className="font-semibold">{lang.name}</span> -{" "}
+                  {lang.level}
                 </li>
               ))}
             </ul>
