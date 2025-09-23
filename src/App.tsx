@@ -222,7 +222,7 @@ function App() {
               </button>
               <ExportButton
                 cvElementRef={cvPreviewRef}
-                fileName={`CV_${PersonalInfo.name}.pdf`}
+                fileName={`CV_${cvData.personalInfo.name || "curriculo"}.pdf`}
               />
             </div>
           </div>
@@ -230,7 +230,9 @@ function App() {
       </div>
 
       <div className="w-1/2 p-8 bg-whote border-l border-gray-200 shadow-lg overflow-y-auto">
-        <CVPreview cvData={cvData} />
+        <div ref={cvPreviewRef}>
+          <CVPreview cvData={cvData} />
+        </div>
       </div>
     </div>
   );
