@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./App.css";
 import PersonalInfo from "./components/Form/PersonalInfo";
 import CVPreview from "./Previw/CVPreview";
@@ -13,6 +13,7 @@ import Skills from "./components/Form/Skills";
 import Experience from "./components/Form/Experience";
 import Education from "./components/Form/Education";
 import Languages from "./components/Form/Languages";
+import ExportButton from "./Previw/ExportButton";
 
 function App() {
   const [cvData, setCvData] = useState<CVData>({
@@ -107,6 +108,8 @@ function App() {
 
   const nextStep = () => setCurrentStep((prev) => prev + 1);
   const prevStep = () => setCurrentStep((prev) => prev - 1);
+
+  const cvPreviewRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -221,6 +224,16 @@ function App() {
           </div>
         )}
       </div>
+
+      <div className="w-1/2 p-8 bg-white border-l border-gray-200 shadow-lg overflow-y-auto">
+        <div className="flex justify-end mb-4">
+          <ExportButton
+            cvElementRef={cvPreviewRef}
+            fileName={`CV_${PersonalInfo.name}.pdf`}
+          />
+        </div>
+      </div>
+
       <div className="w-1/2 p-8 bg-whote border-l border-gray-200 shadow-lg overflow-y-auto">
         <CVPreview cvData={cvData} />
       </div>
