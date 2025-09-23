@@ -14,7 +14,7 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
 
   return (
     <div className="p-8 font-sans bg-white">
-      <div className="p-6 rounded-t-lg mb-6">
+      <div className="rounded-t-lg mb-6">
         <h1 className="text-4xl font-bold text-gray-800">
           {personalInfo.name}
         </h1>
@@ -108,11 +108,14 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
           <h2 className="text-2xl font-bold border-b-2 border-blue-300 pb-2 mb-4">
             HABILIDADES
           </h2>
-          <ul className="list-disc list-inside space-y-2 grid grid-cols-3">
+          <ul className="space-y-2 grid grid-cols-3">
             {skills.map((skill, index) => (
-              <li key={index}>
-                <span className="font-semibold">{skill.name}</span> -{" "}
-                {skill.level}
+              <li key={index} className="flex items-start">
+                <span className="mr-1 text-black">•</span>
+                <p>
+                  <span className="font-semibold">{skill.name}</span> -{" "}
+                  {skill.level}
+                </p>
               </li>
             ))}
           </ul>
@@ -122,11 +125,14 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
           <h2 className="text-2xl font-bold border-b-2 border-blue-300 pb-2 mb-4">
             Idiomas
           </h2>
-          <ul className="list-disc list-inside space-y-2 grid grid-cols-3">
+          <ul className="space-y-2 grid grid-cols-3">
             {languages.map((lang, index) => (
-              <li key={index}>
-                <span className="font-semibold">{lang.name}</span> -{" "}
-                {lang.level}
+              <li key={index} className="flex items-start">
+                <span className="mr-1 text-black">•</span>
+                <p>
+                  <span className="font-semibold">{lang.name}</span> -{" "}
+                  {lang.level}
+                </p>
               </li>
             ))}
           </ul>
