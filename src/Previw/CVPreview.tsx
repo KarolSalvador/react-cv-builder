@@ -1,5 +1,9 @@
 import type { CVData } from "../types/cv.types";
-import { formatPhone, formatDate } from "../utils/textProcessing";
+import {
+  formatPhone,
+  formatDate,
+  formatDescription,
+} from "../utils/textProcessing";
 
 interface CVPreviewProps {
   cvData: CVData;
@@ -51,7 +55,12 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
             <h2 className="text-2xl font-bold border-b-2 border-blue-300 pb-2 mb-4">
               OBJETIVO
             </h2>
-            <p className="text-gray-700">{personalInfo.summary}</p>
+            <p
+              className="text-gray-700"
+              dangerouslySetInnerHTML={{
+                __html: formatDescription(personalInfo.summary),
+              }}
+            ></p>
           </section>
 
           <section className="mb-6">
@@ -67,7 +76,12 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
                     Período: {formatDate(exp.startDate)} -
                     {exp.isCurrent ? "Trabalho Atual" : formatDate(exp.endDate)}
                   </p>
-                  <p className="text-gray-700 mt-2">{exp.description}</p>
+                  <p
+                    className="text-gray-700 mt-2"
+                    dangerouslySetInnerHTML={{
+                      __html: formatDescription(exp.description),
+                    }}
+                  ></p>
                 </li>
               ))}
             </ul>

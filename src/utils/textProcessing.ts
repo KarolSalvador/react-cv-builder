@@ -35,3 +35,10 @@ export const formatDate = (dateString: string): string => {
   const monthIndex = parseInt(month, 10) - 1;
   return `${monthNames[monthIndex]} de ${year}`;
 };
+
+export const formatDescription = (text: string | null): string => {
+  if (!text) {
+    return "";
+  }
+  return text.replace(/\n/g, "<br />");
+};
