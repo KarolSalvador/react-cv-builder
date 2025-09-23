@@ -123,7 +123,7 @@ export default function CVPreview({ cvData }: CVPreviewProps) {
 
         <section className="mb-6">
           <h2 className="text-2xl font-bold border-b-2 border-blue-300 pb-2 mb-4">
-            Idiomas
+            IDIOMAS
           </h2>
           <ul className="space-y-2 grid grid-cols-3">
             {languages.map((lang, index) => (
