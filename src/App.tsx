@@ -220,18 +220,13 @@ function App() {
               >
                 Anterior
               </button>
+              <ExportButton
+                cvElementRef={cvPreviewRef}
+                fileName={`CV_${PersonalInfo.name}.pdf`}
+              />
             </div>
           </div>
         )}
-      </div>
-
-      <div className="w-1/2 p-8 bg-white border-l border-gray-200 shadow-lg overflow-y-auto">
-        <div className="flex justify-end mb-4">
-          <ExportButton
-            cvElementRef={cvPreviewRef}
-            fileName={`CV_${PersonalInfo.name}.pdf`}
-          />
-        </div>
       </div>
 
       <div className="w-1/2 p-8 bg-whote border-l border-gray-200 shadow-lg overflow-y-auto">
