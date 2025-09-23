@@ -4,7 +4,7 @@
 
 Este projeto é uma aplicação web interativa desenvolvida para simplificar a criação de currículos. Ele guia o usuário por um formulário passo a passo para inserir dados pessoais, experiências, formação e habilidades, com uma visualização do currículo sendo gerada e atualizada em tempo real.
 
-![Demonstração do Gerador de Currículo](https://github.com/seu-usuario/seu-repositorio/blob/main/assets/demonstracao.gif?raw=true)
+![Demonstração do Gerador de Currículo](https://github.com/KarolSalvador/react-cv-builder/blob/main/src/assets/demonstracao.gif.gif?raw=true)
 
 ### 🛠️ Tecnologias e Habilidades utilizadas
 
