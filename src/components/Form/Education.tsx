@@ -1,20 +1,10 @@
 import { useState } from "react";
+import type { Education as EducationType } from "../../types/cv.types";
+import DynamicList from "./DynamicList";
 
 interface EducationProps {
-  education: {
-    institution: string;
-    course: string;
-    startDate: string;
-    endDate: string;
-    status: "Em Andamento" | "Concluído" | "Interrompido";
-  }[];
-  onAddEducation: (education: {
-    institution: string;
-    course: string;
-    startDate: string;
-    endDate: string;
-    status: "Em Andamento" | "Concluído" | "Interrompido";
-  }) => void;
+  education: EducationType[];
+  onAddEducation: (education: EducationType) => void;
   onRemoveEducation: (index: number) => void;
 }
 
@@ -46,6 +36,16 @@ export default function Education({
       });
     }
   };
+
+  const renderEducationItem = (edu: EducationType) => (
+    <div className="flex-1 pr-10">
+      <h3 className="text-ls font-semibold">{edu.course}</h3>
+      <p className="text-gray-600">{edu.institution}</p>
+      <p className="text-sm text-gray-500">
+        {edu.startDate} - {edu.endDate} | Status: {edu.status}
+      </p>
+    </div>
+  );
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mb-6">
@@ -155,23 +155,11 @@ export default function Education({
           Adicionar
         </button>
       </div>
-      <ul className="space-y-4">
-        {education.map((edu, index) => (
-          <li key={index} className="bg-gray-50 p-4 rounded-md relative">
-            <h3 className="text-ls font-semibold">{edu.course}</h3>
-            <p className="text-gray-600">{edu.institution}</p>
-            <p className="text-sm text-gray-500">
-              {edu.startDate} - {edu.endDate} | Status: {edu.status}
-            </p>
-            <button
-              onClick={() => onRemoveEducation(index)}
-              className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm font-bold"
-            >
-              Remover
-            </button>
-          </li>
-        ))}
-      </ul>
+      <DynamicList
+        items={education}
+        renderItem={renderEducationItem}
+        onRemove={onRemoveEducation}
+      />
     </div>
   );
 }
