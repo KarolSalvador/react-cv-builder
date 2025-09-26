@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Languages as LanguagesType } from "../../types/cv.types";
+import DynamicList from "./DynamicList";
 
 interface LanguagesProps {
   languages: LanguagesType[];
@@ -14,7 +15,7 @@ export default function Languages({
 }: LanguagesProps) {
   const [newLanguage, setNewLanguage] = useState({
     name: "",
-    level: "Básico" as "Básico" | "Intermediário" | "Avançado" | "Nativo",
+    level: "Básico" as "Básico" | "Intermediário" | "Avançado" | "Fluente",
   });
 
   const handleAdd = () => {
@@ -22,6 +23,14 @@ export default function Languages({
       onAddLanguage(newLanguage);
       setNewLanguage({ name: "", level: "Básico" });
     }
+  };
+
+  const renderLanguageItem = (lang: LanguagesType) => {
+    return (
+      <span>
+        {lang.name} - {lang.level}
+      </span>
+    );
   };
 
   return (
@@ -62,7 +71,7 @@ export default function Languages({
                   | "Básico"
                   | "Intermediário"
                   | "Avançado"
-                  | "Nativo",
+                  | "Fluente",
               })
             }
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm p-2 border"
@@ -70,7 +79,7 @@ export default function Languages({
             <option>Básico</option>
             <option>Intermediário</option>
             <option>Avançado</option>
-            <option>Proficiente</option>
+            <option>Fluente</option>
           </select>
         </div>
         <button
@@ -81,24 +90,11 @@ export default function Languages({
         </button>
       </div>
 
-      <ul className="space-y-2">
-        {languages.map((lang, index) => (
-          <li
-            key={index}
-            className="flex justify-between items-center bg-gray-50 p-3 rounded-md"
-          >
-            <span>
-              {lang.name} - {lang.level}
-            </span>
-            <button
-              onClick={() => onRemoveLanguage(index)}
-              className="text-red-500 hover:text-red-700 text-sm font-bold"
-            >
-              Remover
-            </button>
-          </li>
-        ))}
-      </ul>
+      <DynamicList
+        items={languages}
+        renderItem={renderLanguageItem}
+        onRemove={onRemoveLanguage}
+      />
     </div>
   );
 }
