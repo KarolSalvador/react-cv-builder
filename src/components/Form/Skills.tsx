@@ -1,10 +1,9 @@
 import { useState } from "react";
+import type { Skill } from "../../types/cv.types";
+import DynamicList from "./DynamicList";
 
 interface SkillsProps {
-  skills: {
-    name: string;
-    level: "Básico" | "Intermediário" | "Avançado" | "Proficiente";
-  }[];
+  skills: Skill[];
 
   onAddSkill: (skill: {
     name: string;
@@ -34,6 +33,12 @@ export default function Skills({
       setNewSkill({ name: "", level: "Intermediário" });
     }
   };
+
+  const renderSkillItem = (skill: Skill) => (
+    <span>
+      {skill.name} - {skill.level}
+    </span>
+  );
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mb-6">
@@ -90,26 +95,11 @@ export default function Skills({
         </button>
       </div>
 
-      <ul className="space-y-2">
-        {skills.map((skill, index) => (
-          <li
-            key={index}
-            className="flex justify-between items-center bg-gray-50 p-3 rounded-md"
-          >
-            <span>
-              {skill.name} - {skill.level}
-            </span>
-            <button
-              onClick={() => onRemoveSkill(index)}
-              className="text-red-500 hover:text-red-700"
-              text-sm
-              font-bold
-            >
-              Remover
-            </button>
-          </li>
-        ))}
-      </ul>
+      <DynamicList
+        items={skills}
+        renderItem={renderSkillItem}
+        onRemove={onRemoveSkill}
+      />
     </div>
   );
 }
