@@ -1,24 +1,10 @@
 import { useState } from "react";
+import DynamicList from "./DynamicList";
+import type { Experience as ExperienceType } from "../../types/cv.types"; // Use a tipagem importada
 
 interface ExperienceProps {
-  experiences: {
-    company: string;
-    position: string;
-    startDate: string;
-    endDate: string;
-    isCurrent: boolean;
-    description: string;
-  }[];
-
-  onAddExperience: (experience: {
-    company: string;
-    position: string;
-    startDate: string;
-    endDate: string;
-    isCurrent: boolean;
-    description: string;
-  }) => void;
-
+  experiences: ExperienceType[];
+  onAddExperience: (experience: ExperienceType) => void;
   onRemoveExperience: (index: number) => void;
 }
 
@@ -52,6 +38,16 @@ export default function Experience({
       });
     }
   };
+
+  const renderExperienceItem = (exp: ExperienceType) => (
+    <div className="flex-1 pr-10">
+      <h3 className="text-lg font-semibold">{exp.position}</h3>
+      <p className="text-gray-600">{exp.company}</p>
+      <p className="text-sm text-gray-500">
+        {exp.startDate} - {exp.isCurrent ? "Trabalho Atual" : exp.endDate}
+      </p>
+    </div>
+  );
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md mb-6">
@@ -178,24 +174,11 @@ export default function Experience({
           Adicionar
         </button>
       </div>
-      <ul className="space-y-4">
-        {experiences.map((exp, index) => (
-          <li key={index} className="bg-gray-50 p-4 rounded-md relative">
-            <h3 className="text-lg font-semibold">{exp.position}</h3>
-            <p className="text-gray-600">{exp.company}</p>
-            <p className="text-sm text-gray-500">
-              {exp.startDate} - {exp.isCurrent ? "Trabalho Atual" : exp.endDate}
-            </p>
-            <p className="text-gray-700 mt-2">{exp.description}</p>
-            <button
-              onClick={() => onRemoveExperience(index)}
-              className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm font-bold"
-            >
-              Remover
-            </button>
-          </li>
-        ))}
-      </ul>
+      <DynamicList
+        items={experiences}
+        renderItem={renderExperienceItem}
+        onRemove={onRemoveExperience}
+      />
     </div>
   );
 }
