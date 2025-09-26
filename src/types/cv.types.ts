@@ -22,7 +22,7 @@ export type Skill = {
 
 export type Languages = {
   name: string;
-  level: "Básico" | "Intermediário" | "Avançado" | "Nativo";
+  level: "Básico" | "Intermediário" | "Avançado" | "Fluente";
 };
 
 export type CVData = {
